@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body { 
+    background-color: #3C3C3C;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.categories > * { 
+    opacity: 1;
+    transform: scale(1);
+    transition: all 200ms ease-out;
+}
+
+.categories > *.hover { 
+    transform: scale(1.1);
+}
+
+.categories > *.dim { 
+    transform: scale(0.99);
+    opacity: 0.5;
+}
+
+
+.jumpSection { 
+    mask: linear-gradient(black, rgba(0,0,0,0.4));
+    backdrop-filter: blur(20px);
+}
+
+.sectionText { 
+    transition: all 350ms ease-out;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.sectionText.highlighted { 
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.cast { 
+    opacity: 0;
+    transform: translateX(-20%);
+    transition: all 1.2s ease-in-out;
+}
+.cast.fadeIn { 
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+#votes { 
+    --backgroundWidth: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23353434'/%3E%3Crect width='backgroundWidthVal%25' height='200' x='0' y='0' fill='%23FFD700'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+}
+
+
+
+.movieBackground { 
+    background-size: cover;
+    backdrop-filter: blur(20px);
+}
+
+
+.movieBackground::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    z-index: -1;
+}
+
+.movieCard { 
+    transform: translateY(10%) scale(1);
+    background-size: 100% 100%;
+    opacity: 0;
+}
+
+.movieCard.fadeIn { 
+    transition: all 300ms ease-out;
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+
+.movieCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(15px);
+    z-index: -1;
+}
+
+
+.movieCard.hover { 
+    transition: all 160ms;
+    transform: translateY(-10px) scale(1.03);
+}
+
+.movieCard.imageLoad { 
+    filter: blur(12px);
+}
+
+.dotBackground { 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(
+        rgba(255,255,255,1) 8%,
+        transparent 8%
+    );
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+}
+
+
