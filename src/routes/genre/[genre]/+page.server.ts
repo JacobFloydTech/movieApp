@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { SERVER_ADDRESS } from '$env/static/private';
 
 export const load = (async ({ params }) => {
     const result = genres.filter((e) => e.name.toLowerCase() == params.genre)[0];
@@ -11,7 +12,7 @@ export const load = (async ({ params }) => {
 
 
 const getBestOfCategory = async(genre: number) => { 
-    const request = await fetch('http://localhost:3000/getBestOfCategory', { 
+    const request = await fetch(`${SERVER_ADDRESS}/getBestOfCategory`, { 
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({genre})

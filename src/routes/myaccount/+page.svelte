@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { FavouriteResult, User } from '../../../types';
+	import { serverAddress } from '../store';
 	let favourites: FavouriteResult | null = null;
 	let watchList: FavouriteResult | null = null;
 	let account: User | null = null;
@@ -14,10 +15,10 @@
 		const sessionID = localStorage.getItem('session_id');
 		const userID = localStorage.getItem('userID');
 		const [fav, watch, acc, rate] = await Promise.all([
-			fetch('http://localhost:3000/getFavourites', { method: 'POST', body: JSON.stringify({ sessionID, userID }), headers: { 'content-type': 'application/json' } }).then((e) => e.json()),
-			fetch('http://localhost:3000/getFavourites', { method: 'POST', body: JSON.stringify({ sessionID, userID }), headers: { 'content-type': 'application/json' } }).then((e) => e.json()),
-			fetch('http://localhost:3000/getAccount', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionID, userID }) }).then((e) => e.json()),
-			fetch('http://localhost:3000/getRatedMovies', { method: 'POST', body: JSON.stringify({ sessionID, userID }), headers: { 'content-type': 'application/json' } }).then((e) => e.json())
+			fetch(`${$serverAddress}/getFavourites`, { method: 'POST', body: JSON.stringify({ sessionID, userID }), headers: { 'content-type': 'application/json' } }).then((e) => e.json()),
+			fetch(`${$serverAddress}/getFavourites`, { method: 'POST', body: JSON.stringify({ sessionID, userID }), headers: { 'content-type': 'application/json' } }).then((e) => e.json()),
+			fetch(`${$serverAddress}/getAccount`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionID, userID }) }).then((e) => e.json()),
+			fetch(`${$serverAddress}/getRatedMovies`, { method: 'POST', body: JSON.stringify({ sessionID, userID }), headers: { 'content-type': 'application/json' } }).then((e) => e.json())
 		]);
 		favourites = fav;
 		watchList = watch;

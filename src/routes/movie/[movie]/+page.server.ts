@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-
+import { SERVER_ADDRESS } from '$env/static/private';
 export const load = (async ({ params }) => {
     try { 
 		const movie = params.movie;
@@ -20,7 +20,7 @@ export const load = (async ({ params }) => {
 
 
 	const getBasicData = async (movie: string) => {
-		const request = await fetch('http://localhost:3000/getMovie', {
+		const request = await fetch(`${SERVER_ADDRESS}/getMovie`, {
 			method: 'POST',
 			body: JSON.stringify({ movie }),
 

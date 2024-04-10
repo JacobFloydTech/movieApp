@@ -1,4 +1,5 @@
 import type { PageServerLoad } from './$types';
+import { SERVER_ADDRESS } from '$env/static/private';
 
 export const load = (async ({ params }) => {
     const query = params.search;
@@ -7,7 +8,7 @@ export const load = (async ({ params }) => {
     return {searchQuery, query};
 }) satisfies PageServerLoad;
 const getData = async (query: string, page: number) => {
-	const request = await fetch('http://localhost:3000/search', {
+	const request = await fetch(`${SERVER_ADDRESS}/search`, {
 		method: 'POST',
 		body: JSON.stringify({ query, page }),
 		headers: {

@@ -3,7 +3,7 @@
 	import StarIcon from '$lib/icons/starIcon.svelte';
 
 	import type { MovieDiscoverResult } from '../../types';
-	import { accountData } from '../routes/store';
+	import { accountData, serverAddress } from '../routes/store';
 	import { onMount } from 'svelte';
 
 	let favourite: boolean | null = null;
@@ -17,7 +17,7 @@
 
 	const addTo = async (type: boolean) => {
 		const session = localStorage.getItem('session_id');
-		const request = await fetch('http://localhost:3000/addTo', {
+		const request = await fetch(`${$serverAddress}/addTo`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ sessionID: session, movieID: movie.id, watchList: type })
@@ -29,7 +29,7 @@
 
 	const getFavourites = async () => {
 		const sessionID = localStorage.getItem('session_id');
-		const request = await fetch('http://localhost:3000/containsFavourite', {
+		const request = await fetch(`${$serverAddress}/containsFavourite`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ sessionID: sessionID, movieID: movie.id, accountID: $accountData?.id || 1 })

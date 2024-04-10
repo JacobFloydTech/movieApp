@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { User } from '../../../types';
-	import { accountData } from '../../routes/store';
+	import { accountData, serverAddress } from '../../routes/store';
 	let data: User | null = null;
 	const link = $accountData?.avatar.tmdb.avatar_path ? 'https://image.tmdb.org/t/p/original/' + $accountData.avatar.tmdb.avatar_path : '/defaultUser.svg';
 	const generateRequestToken = async () => {
-		const req = await fetch('http://localhost:3000/createRequestToken');
+		const req = await fetch(`${$serverAddress}/createRequestToken`);
 		const { token } = await req.json();
 		window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=http://localhost:5173`;
 	};

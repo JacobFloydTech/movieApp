@@ -4,7 +4,7 @@
 	export let key: number | null;
 	let imageElement: HTMLImageElement;
 	import type { MovieDiscoverResult } from '../../types';
-	import { accountData, currentHover, sessionID } from '../routes/store';
+	import { accountData, currentHover, serverAddress, sessionID } from '../routes/store';
 	import AddComponent from './addComponent.svelte';
 	let favourite: boolean | null = null;
 	const link = 'https://image.tmdb.org/t/p/w45';
@@ -21,7 +21,7 @@
 	});
 	const getFavourites = async () => {
 		const sessionID = localStorage.getItem('session_id');
-		const request = await fetch('http://localhost:3000/containsFavourite', {
+		const request = await fetch(`${$serverAddress}/containsFavourite`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ sessionID: sessionID, movieID: movie.id, accountID: $accountData?.id || 1 })

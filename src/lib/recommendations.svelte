@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { RecommendationResponse } from '../../types';
 	import MovieComponent from './movieComponent.svelte';
+	import { serverAddress } from '../routes/store';
 	export let id: number;
 	let recommendations: RecommendationResponse;
 	let hide = true;
@@ -9,7 +10,7 @@
 		getRecommendations();
 	});
 	const getRecommendations = async () => {
-		const req = await fetch('http://localhost:3000/getRecommendations', {
+		const req = await fetch(`${$serverAddress}/getRecommendations`, {
 			method: 'POST',
 			body: JSON.stringify({ id }),
 

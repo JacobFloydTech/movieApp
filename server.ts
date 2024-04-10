@@ -19,6 +19,7 @@ app.post('/discover', async (req: Request, res: Response) => {
     const url = 'https://api.themoviedb.org/3/discover/movie';
     const request = await fetch(`${url}?page=${page}`, { headers });
     const response = await request.json();
+   
     res.send(response)
 })
 

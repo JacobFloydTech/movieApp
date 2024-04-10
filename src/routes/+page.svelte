@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import type { MovieDiscover, User } from '../../types';
 	import MovieComponent from '$lib/movieComponent.svelte';
-	import { sessionID } from '../routes/store';
+	import { serverAddress, sessionID } from '../routes/store';
 	import UserComponent from '$lib/icons/userComponent.svelte';
 
 	type customData = {
@@ -30,7 +30,7 @@
 	});
 
 	const getData = async (page: number) => {
-		const request = await fetch('http://localhost:3000/discover', {
+		const request = await fetch(`${$serverAddress}/discover`, {
 			method: 'POST',
 			body: JSON.stringify({ page }),
 			headers: {
@@ -69,7 +69,7 @@
 		{/each}
 	</div>
 	{#if currentData.total_results > 17}
-		<div class={`flex items-center justify-center z-50 mb-12 mx-auto space-x-4 w-full text-white`}>
+		<div class={`flex items-center pt-12 pb-10 justify-center z-50 mb-12 mx-auto space-x-4 w-full text-white`}>
 			<button
 				class={`${page > 1 ? ' opacity-1' : ' opacity-0 pointer-events-none'}`}
 				on:click={() => {

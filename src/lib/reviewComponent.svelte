@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import ReviewCard from '$lib/reviewCard.svelte';
 	import type { Review, ReviewResponse } from '../../types';
+	import { serverAddress } from '../routes/store';
 	export let id: number;
 	let reviews: ReviewResponse;
 	let hide: boolean = false;
@@ -9,7 +10,7 @@
 		getReviews();
 	});
 	const getReviews = async () => {
-		const req = await fetch('http://localhost:3000/getReviews', {
+		const req = await fetch(`${$serverAddress}/getReviews`, {
 			method: 'POST',
 			body: JSON.stringify({ id }),
 

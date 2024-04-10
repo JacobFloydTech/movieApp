@@ -2,6 +2,7 @@
 	export let categories: number[];
 	import { onMount } from 'svelte';
 	import type { Keyword } from '../../types';
+	import { serverAddress } from '../routes/store';
 	let blur = true;
 	let categoriesNames: String[] = [];
 	let keywords: Keyword[] = [];
@@ -27,7 +28,7 @@
 	});
 
 	const getCategories = async () => {
-		const request = await fetch('http://localhost:3000/convertCategoriesToWords', {
+		const request = await fetch(`${$serverAddress}/convertCategoriesToWords`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ ids: categories })
@@ -36,7 +37,7 @@
 		categoriesNames = data;
 	};
 	const getKeywords = async (id: number) => {
-		const request = await fetch('http://localhost:3000/getKeywords', {
+		const request = await fetch(`${$serverAddress}/getKeywords`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id })

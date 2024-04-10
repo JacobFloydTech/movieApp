@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { MovieDiscover, MovieDiscoverResult } from '../../../../types';
 	import MovieComponent from '$lib/movieComponent.svelte';
+	import { serverAddress } from '../../store';
 	type serverData = {
 		searchQuery: MovieDiscover;
 		query: string;
@@ -34,7 +35,7 @@
 		});
 	};
 	const getData = async (searchQuery: string, page: number) => {
-		const request = await fetch('http://localhost:3000/search', {
+		const request = await fetch(`${$serverAddress}/search`, {
 			method: 'POST',
 			body: JSON.stringify({ query: searchQuery, page }),
 			headers: {
