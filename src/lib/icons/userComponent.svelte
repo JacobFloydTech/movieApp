@@ -31,7 +31,7 @@
 		}
 	};
 	const generateNewSession = async (token: string) => {
-		const requestSesionID = await fetch('http://localhost:3000/createSessionID', { method: 'POST', body: JSON.stringify({ token: token }), headers: { 'Content-Type': 'application/json' } });
+		const requestSesionID = await fetch(`${$serverAddress}/createSessionID`, { method: 'POST', body: JSON.stringify({ token: token }), headers: { 'Content-Type': 'application/json' } });
 		const response = await requestSesionID.json();
 		console.log(response);
 		if (response.success) {
@@ -40,7 +40,7 @@
 		}
 	};
 	const getAccount = async (id: string) => {
-		const accountRequest = await fetch('http://localhost:3000/getAccount', {
+		const accountRequest = await fetch(`${$serverAddress}/getAccount`, {
 			method: 'POST',
 			body: JSON.stringify({ sessionID: id }),
 			headers: {
