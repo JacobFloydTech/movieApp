@@ -29,6 +29,10 @@
 
 	const getFavourites = async () => {
 		const sessionID = localStorage.getItem('session_id');
+		if (!sessionID) {
+			favourite = false;
+			return;
+		}
 		const request = await fetch(`${$serverAddress}/containsFavourite`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -40,6 +44,10 @@
 
 	const getWatclist = async () => {
 		const sessionID = localStorage.getItem('session_id');
+		if (!sessionID) {
+			watchList = false;
+			return;
+		}
 		const request = await fetch('http://localhost:3000/containsWatchlist', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
