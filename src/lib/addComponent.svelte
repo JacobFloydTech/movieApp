@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { SERVER_ADDRESS } from '$env/static/private';
 	import SearchIcon from '$lib/icons/searchIcon.svelte';
 	import StarIcon from '$lib/icons/starIcon.svelte';
 
@@ -48,7 +49,7 @@
 			watchList = false;
 			return;
 		}
-		const request = await fetch('http://localhost:3000/containsWatchlist', {
+		const request = await fetch(`${$serverAddress}/containsWatchlist`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ sessionID: sessionID, movieID: movie.id, accountID: $accountData?.id || 1 })
