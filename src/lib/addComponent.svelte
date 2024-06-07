@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { SERVER_ADDRESS } from '$env/static/private';
 	import SearchIcon from '$lib/icons/searchIcon.svelte';
 	import StarIcon from '$lib/icons/starIcon.svelte';
 

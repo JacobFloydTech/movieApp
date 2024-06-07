@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { User } from '../../../types';
 	import { accountData, serverAddress } from '../../routes/store';
-	import { SERVER_ADDRESS } from '$env/static/private';
+
 	let data: User | null = null;
 	const link = $accountData?.avatar.tmdb.avatar_path ? 'https://image.tmdb.org/t/p/original/' + $accountData.avatar.tmdb.avatar_path : '/defaultUser.svg';
 	const generateRequestToken = async () => {
