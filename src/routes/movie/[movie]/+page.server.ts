@@ -14,7 +14,7 @@ export const load = (async ({ params }) => {
         return {
             basicMovieData, images, cast, trailer, 
         };
-    } catch (error) { return redirect(307, '/')}
+    } catch (error) {console.log(error); return redirect(307, '/')}
 
 }) satisfies PageServerLoad;
 
@@ -29,7 +29,7 @@ export const load = (async ({ params }) => {
         return await request.json();
 	};
 	const getImages = async (id: number) => {
-		const request = await fetch('http://localhost:3000/getImages', {
+		const request = await fetch(`${SERVER_ADDRESS}/getImages`, {
 			method: 'POST',
 			body: JSON.stringify({ id}),
 
@@ -38,7 +38,7 @@ export const load = (async ({ params }) => {
 		return await request.json();
 	};
 	const getCast = async (id: number) => {
-		const request = await fetch('http://localhost:3000/getCast', {
+		const request = await fetch(`${SERVER_ADDRESS}/getCast`, {
 			method: 'POST',
 			body: JSON.stringify({id }),
 
@@ -47,7 +47,7 @@ export const load = (async ({ params }) => {
 	    return await request.json();
 	};
 	const getMovieTrailer = async (id: number) => {
-		const request = await fetch('http://localhost:3000/getMovieTrailer', {
+		const request = await fetch(`${SERVER_ADDRESS}/getMovieTrailer`, {
 			method: 'POST',
 			body: JSON.stringify({ id}),
 

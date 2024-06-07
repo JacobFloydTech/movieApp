@@ -141,7 +141,7 @@ app.post('/addTo', async (req: Request, res: Response) => {
     const { accountID, sessionID, movieID, watchList } = req.body;
     if (!sessionID) { return}
     const url = `https://api.themoviedb.org/3/account/${accountID}/${watchList ? "watchlist" : 'favorite'}?session_id=${sessionID}`
-    const contains = await fetch(`http://localhost:3000/contains${watchList ? "Watchlist" : "Favorite"}`, { 
+    const contains = await fetch(`http://localhost:3030/contains${watchList ? "Watchlist" : "Favourite"}`, { 
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -44,7 +44,7 @@
 			el.classList.remove('fadeIn');
 			setTimeout(() => {
 				el.classList.add('fadeIn');
-			}, 200 * i);
+			}, 150 * i);
 		});
 	};
 </script>

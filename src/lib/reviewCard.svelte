@@ -30,6 +30,6 @@
 	<p class="text-lg py-4">
 		{@html currentContent}
 
-		<button on:click={() => (showMore = !showMore)} class={`${review.content.length > 600 ? 'inline' : 'hidden'} `}>.... <span class="font-bold">{showMore ? 'Hide' : 'Expand '}</span></button>
+		<button on:click={() => (showMore = !showMore)} class={`${review.content.length > 600 ? 'inline' : 'hidden'} `}> <span class="font-bold">{showMore ? 'Hide' : '... Expand '}</span></button>
 	</p>
 </div>

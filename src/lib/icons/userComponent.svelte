@@ -6,9 +6,10 @@
 	let data: User | null = null;
 	const link = $accountData?.avatar.tmdb.avatar_path ? 'https://image.tmdb.org/t/p/original/' + $accountData.avatar.tmdb.avatar_path : '/defaultUser.svg';
 	const generateRequestToken = async () => {
+		const location = window.location.href;
 		const req = await fetch(`${$serverAddress}/createRequestToken`);
 		const { token } = await req.json();
-		window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${$serverAddress}`;
+		window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${location}`;
 	};
 	onMount(() => {
 		session();
