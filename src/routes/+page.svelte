@@ -30,6 +30,9 @@
 	});
 
 	const getData = async (page: number) => {
+		document.querySelectorAll('.movieCard').forEach((el) => {
+			el.classList.add('imageLoad');
+		});
 		const request = await fetch(`${$serverAddress}/discover`, {
 			method: 'POST',
 			body: JSON.stringify({ page }),

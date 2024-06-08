@@ -61,7 +61,7 @@
 	};
 </script>
 
-<div id="userComponent" class="absolute bg-[rgba(0,0,0,0.2)] rounded-full flex top-4 right-4 text-white text-2xl px-4 py-2">
+<div id="userComponent" class="absolute rounded-full flex top-4 right-4 text-white text-2xl px-4 py-2">
 	{#if data}
 		<div class="flex z-50 items-center">
 			<a href={`/myaccount`} class="text-base">{!data.name ? data.username : data.name}</a>
