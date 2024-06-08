@@ -102,7 +102,7 @@
 				<h2 class="text-xl font-semibold text-white pb-4">Categories</h2>
 				<div id="categories" class="flex flex-wrap break-words gap-3 categories">
 					{#each categoriesNames as category}
-						<a href="/" on:mouseleave={() => offHover(true)} on:mouseenter={() => onHover(category, true)} class="bg-gray-400 text-lg px-2 py-1 text-white rounded-md">{category}</a>
+						<a href={`/genre/${category.toLowerCase()}`} on:mouseleave={() => offHover(true)} on:mouseenter={() => onHover(category, true)} class="bg-gray-400 text-lg px-2 py-1 text-white rounded-md">{category}</a>
 					{/each}
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 				<h2 class="text-xl font-semibold text-white pb-4">Keywords</h2>
 				<div id="keywords" class="flex flex-wrap break-words gap-3 categories max-h-72 overflow-y-scroll">
 					{#each keywords as keyword}
-						<button on:click={() => (window.location.href = `/keyword/${keyword.name}`)} on:mouseleave={() => offHover(false)} on:mouseenter={() => onHover(keyword.name, false)} class="bg-gray-400 text-lg px-2 py-1 text-white rounded-md">{keyword.name}</button>
+						<button on:click={() => (window.location.href = `/keyword/${keyword.id}`)} on:mouseleave={() => offHover(false)} on:mouseenter={() => onHover(keyword.name, false)} class="bg-gray-400 text-lg px-2 py-1 text-white rounded-md">{keyword.name}</button>
 					{/each}
 				</div>
 			</div>

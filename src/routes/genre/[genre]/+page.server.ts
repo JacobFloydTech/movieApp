@@ -15,7 +15,7 @@ const getBestOfCategory = async(genre: number) => {
     const request = await fetch(`${SERVER_ADDRESS}/getBestOfCategory`, { 
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({genre})
+        body: JSON.stringify({genre, page: 1})
     });
     const { results } = await request.json();
     return results;

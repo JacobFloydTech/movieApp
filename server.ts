@@ -229,14 +229,23 @@ app.post('/getKeywords', async (req: Request, res: Response) => {
 })
 
 app.post('/getBestOfCategory', async (req: Request, res: Response) => { 
-    const { genre } = req.body;
-    const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}`;
+    const { genre, page } = req.body;
+    const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}&page=${page}`;
     const request = await fetch(url, { headers });
     const results = await request.json();
+
     res.send({results})
 
 })
 
+
+app.post('/discoverByKeyword', async (req: Request, res: Response) => { 
+    const { keyword } = req.body;
+    const url = `https://api.themoviedb.org/3/discover/movie?with_keywords=${keyword}`
+    const request = await fetch(url, { headers });
+    const results = await request.json();
+    res.send({results})
+})
 
 
 app.listen(process.env.PORT, () => { 

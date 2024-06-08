@@ -41,9 +41,15 @@
 	<img on:load={() => handleImageLoad()} bind:this={imageElement} src={`${highResLink}${movie.poster_path}`} alt="" class="w-full h-full opacity-0" />
 	<div class="absolute z-50 top-0 left-0 flex flex-col space-y-4 justify-end w-full h-full bg-gradient-to-b from-transparent to-black to-60%">
 		<h1 class="2xl:text-4xl xl:text-2xl lg:text-xl text-lg text-center font-bold text-white">{movie.title}</h1>
-		<p class={`text-white text-left px-4 text-[100px] max-[400px]:text-[15px] max-[500px]:text-[20px] md:text-[10px] max-[850px]:text-[13px] xl:text-base 2xl:text-sm  italic`}>
+		<p class={`text-white hidden 2xl:block text-left px-4 text-[100px] max-[400px]:text-[15px] max-[500px]:text-[20px] md:text-[10px] max-[850px]:text-[13px] xl:text-base 2xl:text-sm  italic`}>
 			{movie.overview.split('').slice(0, 250).join('')}
 			{#if movie.overview.length > 250}
+				<span>...</span>
+			{/if}
+		</p>
+		<p class={`text-white 2xl:hidden text-left px-4 text-[100px] max-[400px]:text-[15px] max-[500px]:text-[20px] md:text-[10px] max-[850px]:text-[13px] xl:text-base 2xl:text-sm  italic`}>
+			{movie.overview.split('').slice(0, 120).join('')}
+			{#if movie.overview.length > 120}
 				<span>...</span>
 			{/if}
 		</p>
